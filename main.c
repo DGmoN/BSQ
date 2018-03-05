@@ -6,14 +6,16 @@
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:29:48 by wgourley          #+#    #+#             */
-/*   Updated: 2018/03/05 12:34:27 by wgourley         ###   ########.fr       */
+/*   Updated: 2018/03/05 12:59:07 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors/std_error.h"
+#include "reading/reader.h"
 
 int main(int ac, char **av)
 {
 	if (ac - 1 < 1)
 		argument_error();
+	read_map(av[1]);
 }
