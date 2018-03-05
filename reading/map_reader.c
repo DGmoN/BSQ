@@ -6,18 +6,22 @@
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:38:44 by wgourley          #+#    #+#             */
-/*   Updated: 2018/03/05 14:01:39 by wgourley         ###   ########.fr       */
+/*   Updated: 2018/03/05 15:17:24 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "reader.h"
 #include <unistd.h>
+#include <stdlib.h>
 #include "../errors/std_error.h"
 #include <fcntl.h>
 
 char		**g_map;
 int			g_line_index = 0;
+int			g_line_number = 0;
+char		*g_line_buffer = 0;
 t_map_param	*g_map_paramaters = 0;
+
 
 char 	**read_map(char *file_name)
 {
@@ -35,6 +39,7 @@ char 	**read_map(char *file_name)
 		free(buffer);
 		buffer = (char *)malloc(sizeof(char *) * BUFFER_SIZE);
 	}
+	return (g_map);
 }
 
 char *get_line(char *data, int length)
@@ -52,7 +57,7 @@ char *get_line(char *data, int length)
 	return (ret);
 }
 
-int		handle_lines(char *data, int read_count)
+void		handle_lines(char *data, int read_count)
 {
 	int		index;
 	int		last;
@@ -62,20 +67,28 @@ int		handle_lines(char *data, int read_count)
 	last = 0;
 	while (index < read_count)
 	{
+		if (g_line_index == 0)
+		{
+			free(g_line_buffer);
+			g_line_buffer = malloc(sizeof(char *) * BUFFER_SIZE);
+		}
 		if (data[index] == '\n')
 		{
-			line = get_line(data + last, index - last);
-			printf("%s", line);
-			exit(0);
-			if(!g_map_paramaters)
+			line = get_line(g_line_buffer + index, g_line_index);
+			if (!g_map_paramaters)
 			{
-				// make params here
-				g_map = (char **)malloc(g_map_paramaters->lines * sizeof(char **));
+				g_map_paramaters = ft_map_param(line);
+				g_map = malloc(sizeof(char **) * g_map_paramaters->lines);
 			}
 			else
-				g_map[g_line_index] = line;
+			{
+				g_line_index = 0;
+				g_map[g_line_number] = line;
+				g_line_number++;
+			}
 		}
+		g_line_buffer[g_line_index] = data[index];
+		g_line_index++;
 		index++;
 	}
-	return (read_count - index);
 }
