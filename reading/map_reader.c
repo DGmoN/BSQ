@@ -6,7 +6,7 @@
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:38:44 by wgourley          #+#    #+#             */
-/*   Updated: 2018/03/05 15:17:24 by wgourley         ###   ########.fr       */
+/*   Updated: 2018/03/05 15:56:13 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@ int			g_line_number = 0;
 char		*g_line_buffer = 0;
 t_map_param	*g_map_paramaters = 0;
 
-
-char 	**read_map(char *file_name)
+char	**read_map(char *file_name)
 {
 	int		file;
-	int 	read_count;
+	int		read_count;
 	char	*buffer;
-	
+
 	file = open(file_name, O_RDONLY);
 	if (file < 1)
 		file_open_error();
@@ -42,7 +41,7 @@ char 	**read_map(char *file_name)
 	return (g_map);
 }
 
-char *get_line(char *data, int length)
+char	*get_line(char *data, int length)
 {
 	char	*ret;
 	int		index;
@@ -57,7 +56,23 @@ char *get_line(char *data, int length)
 	return (ret);
 }
 
-void		handle_lines(char *data, int read_count)
+void	assign_line(char *line)
+{
+	if (!g_map_paramaters)
+	{
+		g_map_paramaters = ft_map_param(line);
+		g_map = malloc(sizeof(char **) * g_map_paramaters->lines);
+		g_line_index = 0;
+	}
+	else
+	{
+		g_line_index = 0;
+		g_map[g_line_number] = line;
+		g_line_number++;
+	}
+}
+
+void	handle_lines(char *data, int read_count)
 {
 	int		index;
 	int		last;
@@ -74,18 +89,8 @@ void		handle_lines(char *data, int read_count)
 		}
 		if (data[index] == '\n')
 		{
-			line = get_line(g_line_buffer + index, g_line_index);
-			if (!g_map_paramaters)
-			{
-				g_map_paramaters = ft_map_param(line);
-				g_map = malloc(sizeof(char **) * g_map_paramaters->lines);
-			}
-			else
-			{
-				g_line_index = 0;
-				g_map[g_line_number] = line;
-				g_line_number++;
-			}
+			line = get_line(g_line_buffer, g_line_index);
+			assign_line(line);
 		}
 		g_line_buffer[g_line_index] = data[index];
 		g_line_index++;
