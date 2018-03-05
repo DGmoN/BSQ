@@ -6,7 +6,7 @@
 /*   By: lzietsma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:42:11 by lzietsma          #+#    #+#             */
-/*   Updated: 2018/03/05 12:57:55 by lzietsma         ###   ########.fr       */
+/*   Updated: 2018/03/05 13:42:25 by lzietsma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_atoi(char *c_array)
 	int value;
 
 	i = 0;
-	while (c_array)
+	while (c_array[i])
 	{
 		value = 10 * value + c_array[i] - '0';
 		i++;
