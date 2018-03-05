@@ -6,7 +6,7 @@
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:11:08 by wgourley          #+#    #+#             */
-/*   Updated: 2018/03/05 12:53:03 by wgourley         ###   ########.fr       */
+/*   Updated: 2018/03/05 15:20:59 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 
 void	argument_error();
 void	file_open_error();
+void	file_head_error();
 
 #endif
