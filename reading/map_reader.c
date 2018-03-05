@@ -6,7 +6,7 @@
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:38:44 by wgourley          #+#    #+#             */
-/*   Updated: 2018/03/05 13:44:50 by wgourley         ###   ########.fr       */
+/*   Updated: 2018/03/05 14:01:39 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <fcntl.h>
 
 char		**g_map;
+int			g_line_index = 0;
 t_map_param	*g_map_paramaters = 0;
 
 char 	**read_map(char *file_name)
@@ -51,7 +52,7 @@ char *get_line(char *data, int length)
 	return (ret);
 }
 
-void	handle_lines(char *data, int read_count)
+int		handle_lines(char *data, int read_count)
 {
 	int		index;
 	int		last;
@@ -69,8 +70,12 @@ void	handle_lines(char *data, int read_count)
 			if(!g_map_paramaters)
 			{
 				// make params here
+				g_map = (char **)malloc(g_map_paramaters->lines * sizeof(char **));
 			}
+			else
+				g_map[g_line_index] = line;
 		}
 		index++;
 	}
+	return (read_count - index);
 }
