@@ -6,12 +6,14 @@
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:29:48 by wgourley          #+#    #+#             */
-/*   Updated: 2018/03/06 13:31:11 by wgourley         ###   ########.fr       */
+/*   Updated: 2018/03/06 13:32:39 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors/std_error.h"
 #include "reading/reader.h"
+#include <stdlib.h>
+#include <fcntl.h>
 
 int main(int ac, char **av)
 {
