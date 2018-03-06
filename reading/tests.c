@@ -6,7 +6,7 @@
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 11:10:52 by wgourley          #+#    #+#             */
-/*   Updated: 2018/03/06 11:33:17 by wgourley         ###   ########.fr       */
+/*   Updated: 2018/03/06 11:50:35 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		length_test(t_map_param *e, char **map)
 	int line;
 	int first_len;
 	int cha;
-	
+
 	line = 0;
 	first_len = -1;
 	while (line < e->lines)
@@ -55,5 +55,5 @@ int		length_test(t_map_param *e, char **map)
 		}
 		line++;
 	}
-	return (1);
+	return (first_len);
 }
