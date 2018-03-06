@@ -6,7 +6,7 @@
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:38:44 by wgourley          #+#    #+#             */
-/*   Updated: 2018/03/05 15:56:13 by wgourley         ###   ########.fr       */
+/*   Updated: 2018/03/06 10:52:45 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,14 @@ void	assign_line(char *line)
 	if (!g_map_paramaters)
 	{
 		g_map_paramaters = ft_map_param(line);
-		g_map = malloc(sizeof(char **) * g_map_paramaters->lines);
+		g_map = malloc(sizeof(char **) * g_map_paramaters->lines + 1);
 		g_line_index = 0;
 	}
-	else
-	{
-		g_line_index = 0;
-		g_map[g_line_number] = line;
-		g_line_number++;
-	}
+
+	g_line_index = 0;
+	g_map[g_line_number] = line;
+	g_line_number++;
+
 }
 
 void	handle_lines(char *data, int read_count)
