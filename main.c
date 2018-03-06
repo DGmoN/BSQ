@@ -6,7 +6,7 @@
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:29:48 by wgourley          #+#    #+#             */
-/*   Updated: 2018/03/06 13:57:36 by wgourley         ###   ########.fr       */
+/*   Updated: 2018/03/06 16:49:59 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "reading/reader.h"
 #include <stdlib.h>
 #include <fcntl.h>
-#include "../new_code/square_init.c"
+#include "sqare/square_manip.h"
 
 int main(int ac, char **av)
 {

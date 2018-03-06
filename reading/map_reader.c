@@ -30,7 +30,8 @@ char	**read_map(int file, t_map_param **params)
 	buffer = (char *)malloc(sizeof(char *) * BUFFER_SIZE);
 	while ((read_count = read(file, buffer, BUFFER_SIZE)))
 	{
-		handle_lines(buffer, read_count);
+		if (handle_lines(buffer, read_count))
+			break ; 
 		free(buffer);
 		buffer = (char *)malloc(sizeof(char *) * BUFFER_SIZE);
 	}
@@ -71,7 +72,7 @@ void	assign_line(char *line)
 	}
 }
 
-void	handle_lines(char *data, int read_count)
+int		handle_lines(char *data, int read_count)
 {
 	int		index;
 	int		last;
@@ -96,6 +97,9 @@ void	handle_lines(char *data, int read_count)
 			g_line_buffer[g_line_index] = data[index];
 			g_line_index++;
 		}
+		if (data[index] == -1)
+			return (0);
 		index++;
 	}
+	return (1);
 }

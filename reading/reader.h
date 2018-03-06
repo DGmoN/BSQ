@@ -24,7 +24,7 @@ typedef	struct	s_map_param
 }				t_map_param;
 
 char			**read_map(int file, t_map_param **params);
-void			handle_lines(char *data, int read_count);
+int				handle_lines(char *data, int read_count);
 t_map_param		*ft_map_param(char *param_array);
 int				character_test(t_map_param *e, char **map);
 int				length_test(t_map_param *e, char **map);
