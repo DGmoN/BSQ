@@ -9,7 +9,7 @@ int		can_go_left(t_map_param *param, t_square_manip *block)
 
 int		can_go_down(t_map_param *param, t_square_manip *block)
 {
-	if (block->y + block->dimension < param->lines)
+	if ((block->y + block->dimension) < param->lines)
 		return (1);
 	return (0);
 }
@@ -22,6 +22,7 @@ void	move_left(t_square_manip *block)
 void	move_down(t_square_manip *block)
 {
 	block->y++;
+	block->x = 0;
 }
 
 void	reset(t_square_manip *block)

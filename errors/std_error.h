@@ -17,4 +17,5 @@ void	argument_error(void);
 void	file_open_error(void);
 void	file_head_error(void);
 void	map_error(char *cause);
+void	size_error(void);
 #endif

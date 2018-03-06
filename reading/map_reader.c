@@ -75,11 +75,9 @@ void	assign_line(char *line)
 int		handle_lines(char *data, int read_count)
 {
 	int		index;
-	int		last;
 	char	*line;
 
 	index = 0;
-	last = 0;
 	while (index < read_count)
 	{
 		if (g_line_index == 0)

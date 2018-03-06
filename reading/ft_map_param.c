@@ -31,10 +31,8 @@ int			array_len(char *array)
 t_map_param	*ft_map_param(char *param_array)
 {
 	int			i;
-	int			j;
 	t_map_param	*ret;
 
-	j = 0;
 	i = array_len(param_array);
 	ret = malloc(sizeof(ret));
 	ret->full = param_array[i];

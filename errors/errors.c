@@ -37,3 +37,9 @@ void	map_error(char *cause)
 	ft_putline(cause);
 	exit(0);
 }
+
+void size_error(void)
+{
+	ft_putline("There is no open space to put a square!\n");
+	exit(0);
+}
