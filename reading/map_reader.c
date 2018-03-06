@@ -6,7 +6,7 @@
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:38:44 by wgourley          #+#    #+#             */
-/*   Updated: 2018/03/06 11:25:17 by wgourley         ###   ########.fr       */
+/*   Updated: 2018/03/06 11:33:05 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ char	**read_map(char *file_name, t_map_param **params)
 		buffer = (char *)malloc(sizeof(char *) * BUFFER_SIZE);
 	}
 	character_test(g_map_paramaters, g_map);
+	length_test(g_map_paramaters, g_map);
 	*params = g_map_paramaters;
 	return (g_map);
 }
