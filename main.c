@@ -6,19 +6,25 @@
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:29:48 by wgourley          #+#    #+#             */
-/*   Updated: 2018/03/06 11:09:04 by wgourley         ###   ########.fr       */
+/*   Updated: 2018/03/06 13:32:39 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors/std_error.h"
 #include "reading/reader.h"
+#include <stdlib.h>
+#include <fcntl.h>
 
 int main(int ac, char **av)
 {
-	if (ac - 1 < 1)
-		argument_error();
+	int file;
+
+	file = 0;
+
+	if (!ac - 1 < 1)
+		file = open(av[1], O_RDONLY);
 	t_map_param *params;
-	char** map = read_map(av[1], &params);
+	char** map = read_map(file, &params);
 	int x = 0;
 	while (x < params->lines)
 	{
