@@ -1,26 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   square_init.c                                      :+:      :+:    :+:   */
+/*   square_valid.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lzietsma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/06 11:12:14 by lzietsma          #+#    #+#             */
-/*   Updated: 2018/03/06 13:41:52 by lzietsma         ###   ########.fr       */
+/*   Created: 2018/03/06 13:32:28 by lzietsma          #+#    #+#             */
+/*   Updated: 2018/03/06 13:41:31 by lzietsma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "square_manip.h"
 
-t_square_manip	*square_init(t_map_param *params)
+t_sqaure_manip	*square_valid(t_square_manip *blk, t_map_params *parm, char **map)
 {
-	square_manip	*ret;
-
-	if (params->map_length < params->lines)
-		ret->dimension = params->map_length;
-	else
-		ret->dimension = params->lines;
-	ret->x = 0;
-	ret->y = 0;
-	return (ret);
 }
