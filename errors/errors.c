@@ -6,7 +6,7 @@
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:30:32 by wgourley          #+#    #+#             */
-/*   Updated: 2018/03/05 15:47:07 by wgourley         ###   ########.fr       */
+/*   Updated: 2018/03/06 11:17:59 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,12 @@ void	file_open_error(void)
 void	file_head_error(void)
 {
 	ft_putline("Error reading file header");
+	exit(0);
+}
+
+void	map_error(char *cause)
+{
+	ft_putstr("There has been a map error:\n");
+	ft_putline(cause);
 	exit(0);
 }

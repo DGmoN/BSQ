@@ -6,7 +6,7 @@
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:38:44 by wgourley          #+#    #+#             */
-/*   Updated: 2018/03/06 10:52:45 by wgourley         ###   ########.fr       */
+/*   Updated: 2018/03/06 11:25:17 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int			g_line_number = 0;
 char		*g_line_buffer = 0;
 t_map_param	*g_map_paramaters = 0;
 
-char	**read_map(char *file_name)
+char	**read_map(char *file_name, t_map_param **params)
 {
 	int		file;
 	int		read_count;
@@ -38,6 +38,8 @@ char	**read_map(char *file_name)
 		free(buffer);
 		buffer = (char *)malloc(sizeof(char *) * BUFFER_SIZE);
 	}
+	character_test(g_map_paramaters, g_map);
+	*params = g_map_paramaters;
 	return (g_map);
 }
 
@@ -61,14 +63,15 @@ void	assign_line(char *line)
 	if (!g_map_paramaters)
 	{
 		g_map_paramaters = ft_map_param(line);
-		g_map = malloc(sizeof(char **) * g_map_paramaters->lines + 1);
+		g_map = malloc(sizeof(char **) * g_map_paramaters->lines);
 		g_line_index = 0;
 	}
-
-	g_line_index = 0;
-	g_map[g_line_number] = line;
-	g_line_number++;
-
+	else
+	{
+		g_line_index = 0;
+		g_map[g_line_number] = line;
+		g_line_number++;
+	}
 }
 
 void	handle_lines(char *data, int read_count)
@@ -91,8 +94,11 @@ void	handle_lines(char *data, int read_count)
 			line = get_line(g_line_buffer, g_line_index);
 			assign_line(line);
 		}
-		g_line_buffer[g_line_index] = data[index];
-		g_line_index++;
+		else
+		{
+			g_line_buffer[g_line_index] = data[index];
+			g_line_index++;
+		}
 		index++;
 	}
 }
