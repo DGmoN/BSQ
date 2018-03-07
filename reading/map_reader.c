@@ -6,7 +6,7 @@
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:38:44 by wgourley          #+#    #+#             */
-/*   Updated: 2018/03/06 13:36:56 by wgourley         ###   ########.fr       */
+/*   Updated: 2018/03/07 12:17:33 by lzietsma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int		handle_lines(char *data, int read_count)
 			g_line_buffer[g_line_index] = data[index];
 			g_line_index++;
 		}
-		if (data[index] == -1)
+		if (data[index] == 0)
 			return (0);
 		index++;
 	}
