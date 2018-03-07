@@ -6,7 +6,7 @@
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:29:48 by wgourley          #+#    #+#             */
-/*   Updated: 2018/03/07 13:10:30 by wgourley         ###   ########.fr       */
+/*   Updated: 2018/03/07 13:35:03 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,14 @@ void	fillin(t_map_param *par, t_square_manip *block, char **map)
 	}
 }
 
-int		main(int ac, char **av)
+void	handle_file(int file)
 {
-	int				file;
 	int				x;
 	char			**map;
 	t_square_manip	*block;
 	t_map_param		*params;
-
-	file = 0;
+	
 	x = 0;
-	if (!ac - 1 < 1)
-		file = open(av[1], O_RDONLY);
 	map = read_map(file, &params);
 	block = square_init(params);
 	move_square(params, block, map);
@@ -57,3 +53,21 @@ int		main(int ac, char **av)
 		x++;
 	}
 }
+	
+int		main(int ac, char **av)
+{
+	int				file;
+	int				ind;
+
+	ind = 0;
+	file = 0;
+	if (!ac - 1 < 1)
+		while (ac - 1 > ind)
+		{
+			file = open(av[ind + 1], O_RDONLY);
+			handle_file(file);
+			ind++;
+		}
+	else
+		handle_file(file);
+	}
