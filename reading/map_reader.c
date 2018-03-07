@@ -6,7 +6,7 @@
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:38:44 by wgourley          #+#    #+#             */
-/*   Updated: 2018/03/07 12:17:33 by lzietsma         ###   ########.fr       */
+/*   Updated: 2018/03/07 13:03:04 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,12 @@ char	**read_map(int file, t_map_param **params)
 	buffer = (char *)malloc(sizeof(char *) * BUFFER_SIZE);
 	while ((read_count = read(file, buffer, BUFFER_SIZE)))
 	{
+		if (!buffer)
+			mem_alloc_error("file buffer");
 		if (handle_lines(buffer, read_count))
-			break ; 
+			break ;
 		free(buffer);
+		buffer = 0;
 		buffer = (char *)malloc(sizeof(char *) * BUFFER_SIZE);
 	}
 	character_test(g_map_paramaters, g_map);
@@ -48,6 +51,8 @@ char	*get_line(char *data, int length)
 
 	index = 0;
 	ret = malloc(sizeof(ret) * (length));
+	if (!ret)
+		mem_alloc_error("line alloc");
 	while (index < length)
 	{
 		ret[index] = data[index];
@@ -61,7 +66,9 @@ void	assign_line(char *line)
 	if (!g_map_paramaters)
 	{
 		g_map_paramaters = ft_map_param(line);
-		g_map = malloc(sizeof(char **) * g_map_paramaters->lines);
+		g_map = malloc(sizeof(char **) * g_map_paramaters->lines + 1);
+		if (!g_map)
+			mem_alloc_error("Map alloc");
 		g_line_index = 0;
 	}
 	else
@@ -95,8 +102,6 @@ int		handle_lines(char *data, int read_count)
 			g_line_buffer[g_line_index] = data[index];
 			g_line_index++;
 		}
-		if (data[index] == 0)
-			return (0);
 		index++;
 	}
 	return (1);

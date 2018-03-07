@@ -6,13 +6,13 @@
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:39:53 by wgourley          #+#    #+#             */
-/*   Updated: 2018/03/06 13:33:11 by wgourley         ###   ########.fr       */
+/*   Updated: 2018/03/07 12:23:58 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef READER_H
 # define READER_H
-# define BUFFER_SIZE 1024
+# define BUFFER_SIZE 2048
 
 typedef	struct	s_map_param
 {

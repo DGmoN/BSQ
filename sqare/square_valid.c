@@ -6,7 +6,7 @@
 /*   By: lzietsma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 13:32:28 by lzietsma          #+#    #+#             */
-/*   Updated: 2018/03/07 12:00:34 by lzietsma         ###   ########.fr       */
+/*   Updated: 2018/03/07 12:27:43 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int		square_valid(t_square_manip *blk, t_map_param *param, char **map)
 		c_char = 0;
 		while (c_char < blk->dimension)
 		{
-			printf("Test: (%i, %i) -> %i -> %i\n", c_line, c_char, map[c_line][c_char], param->obstacle);
 			if (map[c_line + blk->y][c_char + blk->x] == param->obstacle)
 				return (0);
 			c_char++;

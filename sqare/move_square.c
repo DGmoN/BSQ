@@ -11,14 +11,12 @@ void	move_square(t_map_param *param, t_square_manip *block, char **map)
 			move_left(block);
 		else
 		{
-			if(can_go_down(param, block))
+			if (can_go_down(param, block))
 				move_down(block);
 			else
 				reset(block);
 		}
-		printf("testing: (%i, %i) %i\n", block->x, block->y, block->dimension);
-		}
+	}
 	if (block->dimension == 0)
 		size_error();
-	printf("Block fit: (%i, %i) %i\n", block->x, block->y, block->dimension);
 }
