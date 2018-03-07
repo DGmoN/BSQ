@@ -6,7 +6,7 @@
 /*   By: lzietsma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 11:02:29 by lzietsma          #+#    #+#             */
-/*   Updated: 2018/03/07 13:02:27 by wgourley         ###   ########.fr       */
+/*   Updated: 2018/03/07 13:26:05 by lzietsma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 # define SQUARE_MANIP_H
 # include "../reading/reader.h"
 
-typedef struct		s_square_manip
+typedef struct	s_square_manip
 {
-	int	x;
-	int	y;
-	int	dimension;
-}					t_square_manip;
+	int			x;
+	int			y;
+	int			dimension;
+}				t_square_manip;
 
 t_square_manip	*square_init(t_map_param *params);
 void			reset(t_square_manip *block);
