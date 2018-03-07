@@ -28,6 +28,9 @@ char	**read_map(int file, t_map_param **params)
 	char	*buffer;
 
 	buffer = (char *)malloc(sizeof(char *) * BUFFER_SIZE);
+	g_line_number = 0;
+	g_line_index = 0;
+	free_param(&g_map_paramaters);
 	while ((read_count = read(file, buffer, BUFFER_SIZE)))
 	{
 		if (!buffer)
@@ -68,6 +71,7 @@ void	assign_line(char *line)
 	if (!g_map_paramaters)
 	{
 		g_map_paramaters = ft_map_param(line);
+		free(g_map);
 		g_map = malloc(sizeof(char **) * g_map_paramaters->lines + 1);
 		if (!g_map)
 			mem_alloc_error("Map alloc");

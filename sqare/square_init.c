@@ -27,3 +27,9 @@ t_square_manip	*square_init(t_map_param *params)
 	ret->y = 0;
 	return (ret);
 }
+
+int				free_square(t_square_manip **e)
+{
+	free(*e);
+	return (0);
+}

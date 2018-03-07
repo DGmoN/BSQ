@@ -25,7 +25,10 @@ int		character_test(t_map_param *e, char **map)
 		while (map[line][digit])
 		{
 			if (map[line][digit] != e->obstacle && map[line][digit] != e->empty)
+			{
+				printf(map[line]);
 				map_error("Unexpected character encountered");
+			}
 			digit++;
 		}
 		line++;

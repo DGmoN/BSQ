@@ -41,3 +41,9 @@ t_map_param	*ft_map_param(char *param_array)
 		file_head_error();
 	return (ret);
 }
+
+int		free_param(t_map_param **e)
+{
+	free(*e);
+	return (0);
+}

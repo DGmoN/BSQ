@@ -28,4 +28,5 @@ int				handle_lines(char *data, int read_count);
 t_map_param		*ft_map_param(char *param_array);
 int				character_test(t_map_param *e, char **map);
 int				length_test(t_map_param *e, char **map);
+int				free_param(t_map_param **e);
 #endif
