@@ -21,9 +21,7 @@ int			array_len(char *array)
 
 	i = 0;
 	while (array[i])
-	{
 		i++;
-	}
 	i--;
 	return (i);
 }

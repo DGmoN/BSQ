@@ -38,9 +38,10 @@ char	**read_map(int file, t_map_param **params)
 		buffer = 0;
 		buffer = (char *)malloc(sizeof(char *) * BUFFER_SIZE);
 	}
+	free(buffer);
 	character_test(g_map_paramaters, g_map);
 	g_map_paramaters->map_length = length_test(g_map_paramaters, g_map);
-	*params = g_map_paramaters;
+	*params = g_map_paramaters; 
 	return (g_map);
 }
 
@@ -50,7 +51,7 @@ char	*get_line(char *data, int length)
 	int		index;
 
 	index = 0;
-	ret = malloc(sizeof(ret) * (length));
+	ret = (char *)malloc(sizeof(char *) * (length));
 	if (!ret)
 		mem_alloc_error("line alloc");
 	while (index < length)
@@ -58,6 +59,7 @@ char	*get_line(char *data, int length)
 		ret[index] = data[index];
 		index++;
 	}
+	ret[index] = 0;
 	return (ret);
 }
 
@@ -92,6 +94,7 @@ int		handle_lines(char *data, int read_count)
 			free(g_line_buffer);
 			g_line_buffer = malloc(sizeof(char *) * BUFFER_SIZE);
 		}
+		
 		if (data[index] == '\n')
 		{
 			line = get_line(g_line_buffer, g_line_index);

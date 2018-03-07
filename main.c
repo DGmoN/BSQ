@@ -44,6 +44,11 @@ void	handle_file(int file)
 	
 	x = 0;
 	map = read_map(file, &params);
+	if (!params)
+	{
+		ft_putline("No data to read, no header found?");
+		exit(0);
+	}
 	block = square_init(params);
 	move_square(params, block, map);
 	fillin(params, block, map);
