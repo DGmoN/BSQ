@@ -6,7 +6,7 @@
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 11:10:52 by wgourley          #+#    #+#             */
-/*   Updated: 2018/03/06 11:50:35 by wgourley         ###   ########.fr       */
+/*   Updated: 2018/03/08 11:44:00 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int		character_test(t_map_param *e, char **map)
 		{
 			if (map[line][digit] != e->obstacle && map[line][digit] != e->empty)
 			{
-				printf(map[line]);
 				map_error("Unexpected character encountered");
 			}
 			digit++;

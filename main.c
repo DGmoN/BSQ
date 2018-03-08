@@ -6,7 +6,7 @@
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:29:48 by wgourley          #+#    #+#             */
-/*   Updated: 2018/03/07 13:35:03 by wgourley         ###   ########.fr       */
+/*   Updated: 2018/03/08 11:59:21 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int		main(int ac, char **av)
 
 	ind = 0;
 	file = 0;
-	if (!ac - 1 < 1)
+	if (ac - 1 > 0)
 		while (ac - 1 > ind)
 		{
 			file = open(av[ind + 1], O_RDONLY);
@@ -74,5 +74,5 @@ int		main(int ac, char **av)
 			ind++;
 		}
 	else
-		handle_file(file);
-	}
+		handle_file(open("/dev/stdin", O_RDONLY));
+}

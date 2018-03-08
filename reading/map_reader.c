@@ -6,7 +6,7 @@
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:38:44 by wgourley          #+#    #+#             */
-/*   Updated: 2018/03/07 13:03:04 by wgourley         ###   ########.fr       */
+/*   Updated: 2018/03/08 12:11:33 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ char	**read_map(int file, t_map_param **params)
 {
 	int		read_count;
 	char	*buffer;
-
 	buffer = (char *)malloc(sizeof(char *) * BUFFER_SIZE);
 	g_line_number = 0;
 	g_line_index = 0;
@@ -35,7 +34,7 @@ char	**read_map(int file, t_map_param **params)
 	{
 		if (!buffer)
 			mem_alloc_error("file buffer");
-		if (handle_lines(buffer, read_count))
+		if (!handle_lines(buffer, read_count))
 			break ;
 		free(buffer);
 		buffer = 0;
@@ -54,7 +53,7 @@ char	*get_line(char *data, int length)
 	int		index;
 
 	index = 0;
-	ret = (char *)malloc(sizeof(char *) * (length));
+	ret = (char *)malloc(sizeof(char *) * (length + 1));
 	if (!ret)
 		mem_alloc_error("line alloc");
 	while (index < length)
@@ -89,7 +88,6 @@ int		handle_lines(char *data, int read_count)
 {
 	int		index;
 	char	*line;
-
 	index = 0;
 	while (index < read_count)
 	{

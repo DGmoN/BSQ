@@ -6,12 +6,13 @@
 /*   By: lzietsma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 13:04:03 by lzietsma          #+#    #+#             */
-/*   Updated: 2018/03/07 13:04:07 by lzietsma         ###   ########.fr       */
+/*   Updated: 2018/03/08 12:11:06 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "square_manip.h"
 #include "../errors/std_error.h"
+#include "../strs/std_str.h"
 
 void	move_square(t_map_param *param, t_square_manip *block, char **map)
 {
